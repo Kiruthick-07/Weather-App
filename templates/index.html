@@ -12,10 +12,25 @@
             <div class="overlay"></div>
             <div class="info">
                 <h1 class="title">Weather Info</h1>
-                <input type="text" id="cityInput" placeholder="Enter city name" class="city-input">
+                <form method="post">
+                <input type="text" id="cityInput" name="city" placeholder="Enter city name" class="city-input">
                 <center>
                 <button id="getWeatherBtn" class="get-weather-btn">Get Weather</button>
                 </center>
+                </form>
+                {% if error %}
+                   <p class="error">{{ error }}</p>
+                {% endif %}
+
+                {% if weather %}
+                    <div class="card">
+                    <h2>{{ weather.city }}</h2>
+                    <img src="https://openweathermap.org/img/wn/{{ weather.icon }}@2x.png" alt="icon">
+                    <p><b>{{ weather.temp }}°C</b> - {{ weather.desc }}</p>
+                    <p>Humidity: {{ weather.humidity }}%</p>
+                    <p>Wind Speed: {{ weather.wind }} m/s</p>
+                    </div>
+                {% endif %}
 
             </div>
     </div>
